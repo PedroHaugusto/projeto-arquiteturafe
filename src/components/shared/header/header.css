@@ -1,0 +1,43 @@
+.custom-header {
+  background: #F8F9FA;
+  min-height: 60px;
+  width: 100vw;
+  left: 0;
+  top: 0;
+  position: fixed;
+  box-sizing: border-box;
+  margin: 0;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  display: flex;
+  align-items: center;     
+  justify-content: space-between;
+  z-index: 1000;
+  padding-top: 0;           
+  padding-bottom: 0;
+}
+
+.custom-link {
+  color: #12b3cc !important;
+  font-weight: 500;
+  font-size: 1rem;
+  text-decoration: none;
+  margin-left: 1.5rem;
+  transition: color 0.2s;
+}
+
+.custom-link:hover,
+.custom-link.active {
+  color: #12b3cc !important;
+  text-decoration: underline;
+}
+
+.nav {
+  gap: 0.5rem;
+}
+
+.header-logo {
+  max-height: 60px; 
+  width: 80px;      
+  display: block;
+}
