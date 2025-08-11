@@ -5,7 +5,6 @@ export const LocationsList = () => {
     <div>
       <h1 className="mb-4">Localizações</h1>
       <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-        {/* Placeholder de card */}
         <div className="col">
           <div className="card h-100 shadow-sm">
             <div className="card-body">

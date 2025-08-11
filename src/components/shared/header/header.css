@@ -3,18 +3,14 @@
   min-height: 60px;
   width: 100vw;
   left: 0;
-  top: 0;
-  position: fixed;
-  box-sizing: border-box;
+  right: 0;
   margin: 0;
   padding-left: 2rem;
   padding-right: 2rem;
   display: flex;
-  align-items: center;     
+  align-items: center;
   justify-content: space-between;
-  z-index: 1000;
-  padding-top: 0;           
-  padding-bottom: 0;
+  box-sizing: border-box;
 }
 
 .custom-link {
@@ -37,7 +33,7 @@
 }
 
 .header-logo {
-  max-height: 60px; 
-  width: 80px;      
+  max-height: 60px;
+  width: 80px;
   display: block;
 }
