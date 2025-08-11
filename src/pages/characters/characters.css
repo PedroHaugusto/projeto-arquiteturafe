@@ -1,0 +1,44 @@
+/* Imagem do card */
+.character-card .card-img-top {
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+/* Título link sem sublinhado e herdando cor */
+.character-card .character-link {
+  color: inherit;
+}
+.character-card .character-link:hover {
+  text-decoration: underline;
+}
+
+/* Linha de status com o dot colorido e o texto colorido por status */
+.status-line .status-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  margin-right: 6px;
+  vertical-align: middle;
+}
+.status-alive { background-color: #22c55e; }
+.status-dead { background-color: #ef4444; }
+.status-unknown { background-color: #9ca3af; }
+
+.status-text.alive { color: #22c55e; }
+.status-text.dead { color: #ef4444; }
+.status-text.unknown { color: #6b7280; }
+
+/* Bloco da última localização */
+.last-location {
+  border-color: rgba(0,0,0,.08) !important;
+}
+
+/* Hover suave do card */
+.character-card {
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+.character-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0.25rem 1rem rgba(0,0,0,.08);
+}
