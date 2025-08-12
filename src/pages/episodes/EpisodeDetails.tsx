@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
 
 type Episode = {
@@ -13,6 +13,15 @@ type Character = {
   id: number
   name: string
   image: string
+  status?: string
+  species?: string
+  location?: { name: string; url: string }
+}
+
+function statusClass(status?: string) {
+  if (status === 'Alive') return 'text-success'
+  if (status === 'Dead') return 'text-danger'
+  return 'text-warning'
 }
 
 export function EpisodeDetails() {
@@ -21,14 +30,6 @@ export function EpisodeDetails() {
   const [characters, setCharacters] = useState<Character[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
-
-  const characterIds = useMemo(() => {
-    if (!episode?.characters?.length) return []
-    const ids = episode.characters
-      .map(url => url.split('/').pop())
-      .filter(Boolean) as string[]
-    return Array.from(new Set(ids))
-  }, [episode])
 
   useEffect(() => {
     const load = async () => {
@@ -73,6 +74,7 @@ export function EpisodeDetails() {
     <div className="container py-3">
       <Link to="/episodes" className="btn btn-link p-0 mb-3">← Voltar</Link>
 
+        <h2 className="mb-4 text-center" style={{ color: '#ff9800' }}>Detalhes do Episódio</h2>
       <div className="card mb-3">
         <div className="card-body text-center">
           <h3 className="card-title mb-1">{episode.name}</h3>
@@ -88,13 +90,25 @@ export function EpisodeDetails() {
         <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-3">
           {characters.map(c => (
             <div key={c.id} className="col">
-              <div className="card h-100">
+              <div className="card h-100 position-relative">
                 <img src={c.image} className="card-img-top" alt={c.name} />
-                <div className="card-body">
-                  <h6 className="card-title mb-2">{c.name}</h6>
-                  <Link to={`/characters/${c.id}`} className="btn btn-sm btn-outline-primary">
-                    Ver personagem
-                  </Link>
+                <div className="card-body text-center py-3">
+                  <h6 className="card-title mb-1">
+                    <Link to={`/characters/${c.id}`} className="stretched-link text-decoration-none text-reset">
+                      {c.name}
+                    </Link>
+                  </h6>
+                  <small className="text-muted d-block">{c.species}</small>
+                  <div className="mt-2">
+                    <small className="text-muted">Status: </small>
+                    <strong className={statusClass(c.status)}>{c.status || 'Unknown'}</strong>
+                  </div>
+                </div>
+                <div className="card-footer bg-transparent">
+                  <div className="border rounded p-2 bg-light">
+                    <small className="text-muted d-block">Última localização:</small>
+                    <small className="fw-semibold">{c.location?.name || 'Desconhecida'}</small>
+                  </div>
                 </div>
               </div>
             </div>

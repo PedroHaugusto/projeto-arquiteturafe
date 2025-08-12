@@ -36,8 +36,6 @@ export const CharacterDetails = () => {
         setError(null)
         const { data } = await api.get<Character>(`/character/${id}`)
         setCharacter(data)
-
-        // Buscar todos os episódios em paralelo
         if (data.episode.length > 0) {
           const episodeIds = data.episode.map((url) => url.split('/').pop()).join(',')
           const { data: episodesData } = await api.get<Episode[] | Episode>(`/episode/${episodeIds}`)
@@ -111,8 +109,8 @@ export const CharacterDetails = () => {
               <div className="card h-100 shadow-sm">
                 <div className="card-body">
                   <div className="fw-semibold">{ep.name}</div>
-                  <div className="small text-muted">{ep.episode}</div>
-                  <div className="small text-muted">Data: {ep.air_date}</div>
+                  <div className="small text-muted">Episódio: {ep.episode}</div>
+                  <div className="small text-muted">Data Exibição: {ep.air_date}</div>
                 </div>
               </div>
             </Link>

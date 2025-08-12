@@ -43,7 +43,7 @@ export function EpisodesList() {
 
   return (
     <div className="container py-3">
-      <h2 className="text-center mb-3">Episódios</h2>
+      <h2 className="mb-4 text-center" style={{ color: '#ff9800' }}>Episódios</h2>
 
       {loading && <div className="text-center">Carregando...</div>}
       {error && <div className="alert alert-danger">{error}</div>}
@@ -51,14 +51,18 @@ export function EpisodesList() {
       <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-3">
         {episodes.map(ep => (
           <div key={ep.id} className="col">
-            <Link to={`/episodes/${ep.id}`} className="text-decoration-none">
-              <div className="card h-100">
-                <div className="card-body">
-                  <h6 className="card-title mb-1">{ep.name}</h6>
-                  <small className="text-muted">Data de estreia: {ep.air_date}</small>
+            <div className="card h-100 position-relative">
+              <div className="card-body">
+                <h6 className="card-title mb-2">{ep.name}</h6>
+                <div className="small text-muted mb-1">
+                  <span className="fw-semibold">Episódio:</span> {ep.episode}
                 </div>
+                <div className="small text-muted">
+                  <span className="fw-semibold">Data Exibição:</span> {ep.air_date}
+                </div>
+                <Link to={`/episodes/${ep.id}`} className="stretched-link" />
               </div>
-            </Link>
+            </div>
           </div>
         ))}
       </div>
@@ -71,7 +75,7 @@ export function EpisodesList() {
         >
           Página anterior
         </button>
-        <span className="align-self-center">Página {page}</span>
+        <span className="align-self-center">Página {page}{info?.pages ? ` / ${info.pages}` : ''}</span>
         <button
           className="btn btn-outline-secondary btn-sm"
           disabled={!info?.next}
