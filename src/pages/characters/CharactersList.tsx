@@ -83,8 +83,7 @@ export const CharactersList = () => {
 
   return (
     <div>
-      <h1 className="mb-4 text-center">Personagens</h1>
-
+      <h2 className="mb-4 text-center" style={{ color: '#ff9800' }}>Personagens</h2>
       {loading && (
         <div className="d-flex justify-content-center my-5">
           <div className="spinner-border text-warning" role="status" aria-label="Carregando..." />
